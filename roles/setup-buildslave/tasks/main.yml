@@ -2,7 +2,7 @@
   action: user name=buildslave
 
 - name: Make buildslave dir
-  action: file path=/buildslave owner=buildslave mode=0775
+  action: file path=/buildslave state=directory owner=buildslave mode=0775
 
 - name: Copy over template
   action: template src=buildbot.tac dest=/buildslave/buildbot.tac
