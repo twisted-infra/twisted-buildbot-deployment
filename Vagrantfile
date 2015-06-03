@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "freebsd-10.1" do |freebsd101|
     freebsd101.vm.box = "http://iris.hosting.lv/freebsd-10.1-amd64.box"
-    freebsd101.vm.network "forwarded_port", guest: 22, host: 2230
+    freebsd101.vm.network "forwarded_port", guest: 22, host: 2430
   end
 
   config.vm.provision "ansible" do |ansible|
