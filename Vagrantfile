@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "provisioning/playbook.yml"
+    ansible.playbook = "playbook.yml"
     ansible.extra_vars = { ansible_ssh_user: 'vagrant',
                            ansible_python_interpreter: "/usr/bin/env python2"}
   end
