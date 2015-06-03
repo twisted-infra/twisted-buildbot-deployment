@@ -10,8 +10,11 @@
 - name: Install idna to {{virtualenv_location}}
   action: pip virtualenv_command="{{python_exe}} -m virtualenv" virtualenv="{{virtualenv_location}}" name=idna
 
-- name: Install coverage to {{virtualenv_location}}
-  action: pip virtualenv_command="{{python_exe}} -m virtualenv" virtualenv="{{virtualenv_location}}" name=coverage
+- name: Install PyCrypto to {{virtualenv_location}}
+  action: pip virtualenv_command="{{python_exe}} -m virtualenv" virtualenv="{{virtualenv_location}}" name=pycrypto
+
+- name: Install pyasn1 to {{virtualenv_location}}
+  action: pip virtualenv_command="{{python_exe}} -m virtualenv" virtualenv="{{virtualenv_location}}" name=pyasn1
 
 - name: Install coverage to {{virtualenv_location}}
   action: pip virtualenv_command="{{python_exe}} -m virtualenv" virtualenv="{{virtualenv_location}}" name=coverage
