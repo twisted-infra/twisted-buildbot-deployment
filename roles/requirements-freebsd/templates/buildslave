@@ -1,1 +1,1 @@
-sudo su buildslave /buildslave/start
+su buildslave /buildslave/start
