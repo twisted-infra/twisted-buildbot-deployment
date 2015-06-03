@@ -1,1 +1,1 @@
-su buildslave /usr/local/bin/buildslave /buildslave/ start
+su buildslave "/usr/local/bin/python2 /usr/local/bin/buildslave /buildslave/ start"
