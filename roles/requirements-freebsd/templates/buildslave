@@ -1,1 +1,21 @@
-su buildslave -c "/usr/local/bin/python2 /usr/local/bin/buildslave start /buildslave/ "
+#!/bin/sh
+
+. /etc/rc.subr
+
+name="buildslave"
+start_cmd="${name}_start"
+stop_cmd="${name}_stop"
+
+buildslave_start()
+{
+	su buildslave -c "/usr/local/bin/python2 /usr/local/bin/buildslave start /buildslave/ "
+}
+
+buildslave_stop()
+{
+	su buildslave -c "/usr/local/bin/python2 /usr/local/bin/buildslave start /buildslave/ "
+}
+
+
+load_rc_config $name
+run_rc_command "$1"

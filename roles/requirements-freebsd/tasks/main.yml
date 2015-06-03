@@ -10,6 +10,9 @@
 - name: Copy over startup file
   action: template src=buildslave dest="/usr/local/etc/rc.d/buildslave" mode="u=rwx,g=rx,o=rx"
 
+- name: Set to start at boot
+  action: lineinfile dest=/etc/rc.conf line='buildslave_enable="YES"'
+
 - name: Set up locale
   action: patch dest=/etc/login.conf src="/tmp/login.diff"
 
