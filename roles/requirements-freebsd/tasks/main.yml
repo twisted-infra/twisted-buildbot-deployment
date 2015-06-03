@@ -7,6 +7,9 @@
 - name: Copy over locale settings
   action: template src=login.diff dest="/tmp/login.diff"
 
+- name: Copy over startup file
+  action: template src=buildslave dest="/usr/local/etc/rc.d/buildslave" mode="u=rwx,g=rx,o=rx"
+
 - name: Set up locale
   action: patch dest=/etc/login.conf src="/tmp/login.diff"
 
