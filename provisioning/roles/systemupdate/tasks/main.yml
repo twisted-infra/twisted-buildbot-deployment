@@ -1,0 +1,27 @@
+- name: Update pkg cache (FreeBSD)
+  action: command pkg update
+  when: ansible_distribution == 'FreeBSD'
+
+- name: Update pkg packages (FreeBSD)
+  action: command pkg upgrade -y
+  when: ansible_distribution == 'FreeBSD'
+
+- name: Install SSL certs (FreeBSD)
+  action: pkgng name=security/ca_root_nss
+  when: ansible_distribution == 'FreeBSD'
+
+- name: Setup SSL certs (FreeBSD)
+  action: file src=/usr/local/share/certs/ca-root-nss.crt dest=/etc/ssl/cert.pem state=link
+  when: ansible_distribution == 'FreeBSD'
+
+- name: Update apt cache (Debian)
+  action: command apt-get update
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Upgrade apt packages (Debian)
+  action: command apt-get dist-upgrade -y
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Update yum packages (RH)
+  action: command yum upgrade -y
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

@@ -1,0 +1,14 @@
+- name: Set up user
+  action: user name=buildslave
+
+- name: Make buildslave dir
+  action: file path=/buildslave owner=buildslave mode=0775
+
+- name: Copy over template
+  action: template src=buildbot.tac dest=/buildslave/buildbot.tac
+
+- name: Copy over start file
+  action: template src=start dest=/buildslave/start mode="u=rwx,g=rx,o=rx"
+
+- name: Make log directory
+  action: file path=/buildslave/log state=directory

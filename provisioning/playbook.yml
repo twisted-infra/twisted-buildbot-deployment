@@ -1,0 +1,41 @@
+- hosts: freebsd-10.1
+  sudo: yes
+  roles:
+    - systemupdate
+    - requirements-freebsd
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env python2"
+      }
+    - {
+        role: install-buildslave,
+        python_exe: "/usr/bin/env python2"
+      }
+    - {
+        role: install-dependencies,
+        virtualenv_location: "/py27-venv",
+        python_exe: "/usr/bin/env python2"
+      }
+    #- install-pypy
+    #- {
+    #    role: install-dependencies,
+    #    virtualenv_location: "/pypy2-venv",
+    #    python_exe: "/usr/bin/env pypy"
+    #  }
+    - install-python34
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env python3.4"
+      }
+    - {
+        role: install-dependencies,
+        virtualenv_location: "/pypy34-venv",
+        python_exe: "/usr/bin/env python3.4"
+      }
+    - {
+        role: setup-buildslave,
+        host: "buildbot.twistedmatrix.com",
+        port: 9987,
+        name: "name",
+        password: "pass"
+    }

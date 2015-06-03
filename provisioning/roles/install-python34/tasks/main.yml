@@ -1,0 +1,3 @@
+- name: Install Python 3.4 (FreeBSD)
+  action: pkgng name=python34
+  when: ansible_distribution == 'FreeBSD'

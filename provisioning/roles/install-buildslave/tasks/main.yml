@@ -1,0 +1,2 @@
+- name: Install buildslave
+  action: pip executable="{{python_exe}} -m pip" name=buildbot-slave

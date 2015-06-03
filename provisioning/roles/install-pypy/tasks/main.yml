@@ -1,0 +1,3 @@
+- name: Install PyPy (FreeBSD)
+  action: pkgng name=py27-pypy
+  when: ansible_distribution == 'FreeBSD'

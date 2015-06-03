@@ -1,0 +1,14 @@
+- name: Install build dependencies
+  action: pkgng name=libffi,ftp/wget,git
+
+- name: Copy over locale settings
+  action: template src=login.diff dest="/tmp/login.diff"
+
+- name: Set up locale
+  action: patch dest=/etc/login.conf src="/tmp/login.diff"
+
+- name: Regen login capabilities
+  action: command cap_mkdb /etc/login.conf
+
+- name: Make fdesc mount
+  action: lineinfile dest=/etc/fstab line="fdesc /dev/fd fdescfs rw,auto,late 0 0"
