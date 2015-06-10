@@ -10,5 +10,15 @@
 - name: Copy over start file
   action: template src=start dest=/buildslave/start mode="u=rwx,g=rx,o=rx"
 
-- name: Make log directory
-  action: file path=/buildslave/log state=directory
+- name: Make info directory
+  action: file path=/buildslave/info state=directory
+
+- set_fact: text="{{ admin_info }}"
+
+- name: Make admin info file
+  action: template src=simple dest=/buildslave/info/admin
+
+- set_fact: text="{{ host_info }}"
+
+- name: Make host info file
+  action: template src=simple dest=/buildslave/info/host

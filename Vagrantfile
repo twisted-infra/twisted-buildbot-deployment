@@ -17,6 +17,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     freebsd101.vm.network "forwarded_port", guest: 22, host: 2430
   end
 
+  config.vm.define "debian-7" do |box|
+    box.vm.box = "chef/debian-7.8"
+    box.vm.network "forwarded_port", guest: 22, host: 2431
+  end
+
+  config.vm.define "debian-8" do |box|
+    box.vm.box = "https://github.com/holms/vagrant-jessie-box/releases/download/Jessie-v0.1/Debian-jessie-amd64-netboot.box"
+    box.vm.network "forwarded_port", guest: 22, host: 2432
+  end
+
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
     ansible.extra_vars = { ansible_ssh_user: 'vagrant',

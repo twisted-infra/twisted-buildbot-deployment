@@ -37,5 +37,81 @@
         host: "buildbot.twistedmatrix.com",
         port: 9987,
         name: "name",
-        password: "pass"
+        password: "pass",
+        admin_info: "Admin <email>",
+        host_info: "FreeBSD 10.1 x64"
+    }
+- hosts: debian-7
+  sudo: yes
+  roles:
+    - systemupdate
+    - requirements-debian
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env python2"
+      }
+    - {
+        role: install-buildslave,
+        python_exe: "/usr/bin/env python2"
+      }
+    - {
+        role: install-dependencies,
+        virtualenv_location: "/py27-venv",
+        python_exe: "/usr/bin/env python2"
+      }
+    - {
+        role: setup-buildslave,
+        host: "buildbot.twistedmatrix.com",
+        port: 9987,
+        name: "name",
+        password: "pass",
+        admin_info: "Admin <email>",
+        host_info: "Debian 7 x64"
+    }
+- hosts: debian-8
+  sudo: yes
+  roles:
+    - systemupdate
+    - requirements-debian
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env python2"
+      }
+    - {
+        role: install-buildslave,
+        python_exe: "/usr/bin/env python2"
+      }
+    - install-pypy
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env pypy"
+      }
+    - {
+        role: install-dependencies,
+        virtualenv_location: "/pypy2-venv",
+        python_exe: "/usr/bin/env pypy"
+      }
+    - install-python34
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env python3.4"
+      }
+    - {
+        role: install-dependencies,
+        virtualenv_location: "/pypy34-venv",
+        python_exe: "/usr/bin/env python3.4"
+      }
+    - {
+        role: install-dependencies,
+        virtualenv_location: "/py27-venv",
+        python_exe: "/usr/bin/env python2"
+      }
+    - {
+        role: setup-buildslave,
+        host: "buildbot.twistedmatrix.com",
+        port: 9987,
+        name: "name",
+        password: "pass",
+        admin_info: "Admin <email>",
+        host_info: "Debian 8 x64"
     }
