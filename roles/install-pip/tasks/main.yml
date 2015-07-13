@@ -1,5 +1,7 @@
 - name: Download pip
   action: command wget -O /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py
+  args:
+    creates: /tmp/get-pip.py
 
 - name: Install pip to {{python_exe}}
   action: command {{python_exe}} /tmp/get-pip.py

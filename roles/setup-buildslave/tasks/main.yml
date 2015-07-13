@@ -22,3 +22,11 @@
 
 - name: Make host info file
   action: template src=simple dest=/buildslave/info/host
+
+- name: Set up systemd service
+  action: template src=buildbot.service dest=/etc/systemd/system/buildbot.service
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22'
+
+- name: Enable systemd service
+  action: service name=buildbot state=started enabled=yes
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22'

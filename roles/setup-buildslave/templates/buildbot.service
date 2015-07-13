@@ -1,0 +1,10 @@
+[Unit]
+Description=Buildbot
+
+[Service]
+ExecStart=/usr/bin/buildslave start --nodaemon /buildslave/
+Restart=always
+User=buildslave
+
+[Install]
+WantedBy=multi-user.target

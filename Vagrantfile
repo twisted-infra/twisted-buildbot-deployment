@@ -27,6 +27,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     box.vm.network "forwarded_port", guest: 22, host: 2432
   end
 
+  config.vm.define "fedora-22" do |box|
+    box.vm.box = "boxcutter/fedora22"
+    box.vm.network "forwarded_port", guest: 22, host: 2433
+  end
+
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
     ansible.extra_vars = { ansible_ssh_user: 'vagrant',

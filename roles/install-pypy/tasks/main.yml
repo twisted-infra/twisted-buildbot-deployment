@@ -5,3 +5,7 @@
 - name: Install PyPy (Debian)
   action: apt pkg=pypy,pypy-dev
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install pypy (Fedora 22+)
+  action: dnf name=pypy,pypy-devel
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22'
