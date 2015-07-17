@@ -117,3 +117,35 @@
         admin_info: "Admin <email>",
         host_info: "Fedora 22 x64"
     }
+- hosts: ubuntu-15.04
+  sudo: yes
+  roles:
+    - systemupdate
+    - requirements-debian
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env python2"
+      }
+    - {
+        role: install-buildslave,
+        python_exe: "/usr/bin/env python2"
+      }
+    - install-pypy
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env pypy"
+      }
+    - install-python34
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env python3.4"
+      }
+    - {
+        role: setup-buildslave,
+        host: "buildbot.twistedmatrix.com",
+        port: 9987,
+        name: "name",
+        password: "pass",
+        admin_info: "Admin <email>",
+        host_info: "Ubuntu 15.04 x64"
+    }

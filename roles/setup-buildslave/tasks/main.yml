@@ -10,6 +10,9 @@
 - name: Copy over start file
   action: template src=start dest=/buildslave/start mode="u=rwx,g=rx,o=rx"
 
+- name: Copy over start_nd file
+  action: template src=start_nd dest=/buildslave/start_nd mode="u=rwx,g=rx,o=rx"
+
 - name: Make info directory
   action: file path=/buildslave/info state=directory
 
@@ -25,8 +28,8 @@
 
 - name: Set up systemd service
   action: template src=buildbot.service dest=/etc/systemd/system/buildbot.service
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22'
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22' or ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'vivid'
 
 - name: Enable systemd service
   action: service name=buildbot state=started enabled=yes
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22'
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22' or ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'vivid'

@@ -32,6 +32,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     box.vm.network "forwarded_port", guest: 22, host: 2433
   end
 
+  config.vm.define "ubuntu-15.04" do |box|
+    box.vm.box = "ubuntu/vivid64"
+    box.vm.network "forwarded_port", guest: 22, host: 2434
+  end
+
+
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
     ansible.extra_vars = { ansible_ssh_user: 'vagrant',

@@ -4,5 +4,11 @@
 - name: Set up locale
   action: locale_gen name=en_US.UTF-8
 
+- name: Install some tools
+  action: apt pkg=git,debhelper
+
 - name: Install the Python 2.7 development headers
   action: apt pkg=python-dev,libffi-dev
+
+- name: Install some required libs
+  action: apt pkg=libssl-dev,build-essential

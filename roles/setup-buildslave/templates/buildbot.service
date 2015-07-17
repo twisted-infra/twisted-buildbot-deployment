@@ -2,7 +2,7 @@
 Description=Buildbot
 
 [Service]
-ExecStart=/usr/bin/buildslave start --nodaemon /buildslave/
+ExecStart=/buildslave/start_nd
 Restart=always
 User=buildslave
 
