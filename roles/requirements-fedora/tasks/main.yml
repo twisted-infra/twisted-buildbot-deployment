@@ -1,5 +1,8 @@
 - name: Install the Python 2.7 development headers
   action: dnf name=python-devel,libffi-devel
 
+- name: Install build requirements
+  action: dnf name="@Development Tools"
+
 - name: Install build deps
   action: dnf name=openssl-devel,gmp-devel

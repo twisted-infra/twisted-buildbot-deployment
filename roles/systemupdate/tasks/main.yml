@@ -18,20 +18,20 @@
   action: command apt-get update
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: Upgrade apt packages (Debian)
-  action: command apt-get dist-upgrade -y
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+#- name: Upgrade apt packages (Debian)
+#  action: command apt-get dist-upgrade -y
+#  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Update yum packages (RH)
   action: command yum upgrade -y
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-
-- name: Update dnf packages (Fedora 22+)
-  action: command dnf upgrade -y
-  when: ansible_distribution == 'Fedoraa' and ansible_distribution_version >= '22'
 
 - name: Install yum utilities (Fedora 22+)
   shell: dnf install yum-utils -y
   when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22'
   args:
     creates: /usr/bin/repomanage
+
+- name: Update dnf packages (Fedora 22+)
+  action: dnf name=* state=latest
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22'
