@@ -6,3 +6,6 @@
 
 - name: Install build deps
   action: dnf name=openssl-devel,gmp-devel
+
+- name: Set firewall to trusted
+  action: command firewall-cmd --set-default-zone=trusted

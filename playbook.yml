@@ -140,6 +140,11 @@
         role: install-pip,
         python_exe: "/usr/bin/env python3.4"
       }
+    - install-jython
+    - {
+        role: install-pip,
+        python_exe: "/usr/bin/env jython"
+      }
     - {
         role: setup-buildslave,
         host: "buildbot.twistedmatrix.com",
