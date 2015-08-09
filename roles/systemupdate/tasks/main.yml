@@ -15,23 +15,27 @@
   when: ansible_distribution == 'FreeBSD'
 
 - name: Update apt cache (Debian)
-  action: command apt-get update
+  action: apt update_cache=yes cache_valid_time=3600
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-#- name: Upgrade apt packages (Debian)
-#  action: command apt-get dist-upgrade -y
-#  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- name: Upgrade apt packages (Debian)
+  action: apt upgrade=dist
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntulolitsbusted'
 
 - name: Update yum packages (RH)
   action: command yum upgrade -y
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
-- name: Install yum utilities (Fedora 22+)
+- name: Install dnf (Fedora 21)
+  shell: yum install dnf -y
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version == '21'
+
+- name: Install yum utilities (Fedora 21+)
   shell: dnf install yum-utils -y
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22'
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '21'
   args:
     creates: /usr/bin/repomanage
 
-- name: Update dnf packages (Fedora 22+)
+- name: Update dnf packages (Fedora 21+)
   action: dnf name=* state=latest
-  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '22'
+  when: ansible_distribution == 'Fedora' and ansible_distribution_version >= '21'
