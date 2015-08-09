@@ -1,0 +1,19 @@
+- name: Install Jython dependencies (Debian)
+  action: apt pkg=openjdk-8-jre-headless
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Download Jython
+  action: command wget -O /var/cache/jython.jar https://repo1.maven.org/maven2/org/python/jython-installer/2.7.0/jython-installer-2.7.0.jar\#b44352ece72382268a60e2848741c96609a91d796bb9a9c6ebeff62f0c12c9cf
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  args:
+    creates: /var/cache/jython.jar
+
+- name: Install Jython (Debian)
+  action: shell java -jar /var/cache/jython.jar -s -d /usr/local/lib/jython/
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  args:
+    creates: /usr/local/lib/jython/bin/jython
+
+- name: Symlink Jython (Debian)
+  action: file src=/usr/local/lib/jython/bin/jython dest=/usr/bin/jython state=link
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
