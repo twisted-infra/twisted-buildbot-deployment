@@ -1,0 +1,11 @@
+- name: Install the Python 2.7 development headers
+  action: yum name=python-devel,libffi-devel
+
+- name: Install build requirements
+  action: yum name="@Development Tools",wget
+
+- name: Install build deps
+  action: yum name=openssl-devel,gmp-devel
+
+- name: Set firewall to trusted
+  action: template src=iptables dest=/etc/sysconfig/iptables
