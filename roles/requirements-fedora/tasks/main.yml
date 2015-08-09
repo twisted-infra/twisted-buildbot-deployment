@@ -2,10 +2,10 @@
   action: dnf name=python-devel,libffi-devel
 
 - name: Install build requirements
-  action: dnf name="@Development Tools"
+  action: dnf name="@Development Tools",wget
 
 - name: Install build deps
   action: dnf name=openssl-devel,gmp-devel
 
 - name: Set firewall to trusted
-  action: command firewall-cmd --set-default-zone=trusted
+  action: template src=iptables dest=/etc/sysconfig/iptables
