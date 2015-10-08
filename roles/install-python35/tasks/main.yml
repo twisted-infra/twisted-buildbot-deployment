@@ -1,0 +1,7 @@
+- name: Install Python 3.5 (FreeBSD)
+  action: pkgng name=python35
+  when: ansible_distribution == 'FreeBSD'
+
+- name: Install Python 3.5 (Debian)
+  action: apt pkg=python3.5,python3.5-dev
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
