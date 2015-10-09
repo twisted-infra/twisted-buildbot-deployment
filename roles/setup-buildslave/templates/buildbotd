@@ -6,7 +6,7 @@ name=buildbotd
 rcvar=buildbotd_enable
 
 command="/usr/bin/su"
-command_args="-m buildslave -l -c '/usr/local/bin/python2 /usr/local/bin/buildslave start --nodaemon /buildslave/'"
+command_args="-l -m buildslave -c '/usr/local/bin/python2 /usr/local/bin/buildslave start --nodaemon /buildslave/'"
 
 load_rc_config $name
 run_rc_command "$1"
