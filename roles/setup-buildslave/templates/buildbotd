@@ -5,8 +5,10 @@
 name=buildbotd
 rcvar=buildbotd_enable
 
+pidfile="/buildslave/twistd.pid"
+
 command="/usr/bin/su"
-command_args="-l buildslave -c '/usr/local/bin/python2 /usr/local/bin/buildslave start --nodaemon /buildslave/'"
+command_args="-l buildslave -c '/usr/local/bin/python2 /usr/local/bin/buildslave start /buildslave/'"
 
 load_rc_config $name
 run_rc_command "$1"
