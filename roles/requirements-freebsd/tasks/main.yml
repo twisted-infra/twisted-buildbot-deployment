@@ -1,5 +1,5 @@
 - name: Install build dependencies
-  action: pkgng name=libffi,ftp/wget,git
+  action: pkgng name=libffi,ftp/wget,git,databases/sqlite3
 
 - name: Symlink Python
   action: file src="/usr/local/bin/python2" dest="/usr/local/bin/python" state=link

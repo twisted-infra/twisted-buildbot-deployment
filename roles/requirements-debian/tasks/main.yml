@@ -11,4 +11,4 @@
   action: apt pkg=python-dev,libffi-dev
 
 - name: Install some required libs
-  action: apt pkg=libssl-dev,build-essential,sqlite3-dev
+  action: apt pkg=libssl-dev,build-essential,libsqlite3-dev
