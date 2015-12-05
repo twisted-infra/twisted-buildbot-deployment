@@ -5,7 +5,7 @@
   action: yum name="@Development Tools",wget
 
 - name: Install build deps
-  action: yum name=openssl-devel,gmp-devel
+  action: yum name=openssl-devel,gmp-devel,sqlite-devel
 
 - name: Set firewall to trusted
   action: template src=iptables dest=/etc/sysconfig/iptables

@@ -5,7 +5,7 @@
   action: dnf name="@Development Tools",wget
 
 - name: Install build deps
-  action: dnf name=openssl-devel,gmp-devel
+  action: dnf name=openssl-devel,gmp-devel,rpm-build,sqlite-devel
 
 - name: Set firewall to trusted
   action: template src=iptables dest=/etc/sysconfig/iptables
