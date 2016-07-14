@@ -12,3 +12,6 @@
 
 - name: Install some required libs
   action: apt pkg=libssl-dev,build-essential,libsqlite3-dev
+
+- name: Install some Python libs
+  action: apt pkg=python-gi
