@@ -14,7 +14,7 @@
   action: lineinfile dest=/etc/rc.conf line='buildslave_enable="YES"'
 
 - name: Set up locale
-  action: patch dest=/etc/login.conf src="/tmp/login.diff"
+  action: patch dest=/etc/login.conf src="/tmp/login.diff" remote_src=yes
 
 - name: Regen login capabilities
   action: command cap_mkdb /etc/login.conf

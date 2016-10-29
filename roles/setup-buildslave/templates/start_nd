@@ -1,2 +1,2 @@
 #!/bin/sh -
-buildslave start --nodaemon /buildslave/
+/buildslave/venv/bin/buildslave start --nodaemon /buildslave/

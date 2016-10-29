@@ -1,2 +1,2 @@
 #!/bin/sh -
-buildslave start /buildslave/
+/buildslave/venv/bin/buildslave start /buildslave/

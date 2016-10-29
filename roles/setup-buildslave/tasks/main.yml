@@ -43,5 +43,5 @@
   when: ansible_distribution == 'FreeBSD'
 
 - name: Start FreeBSD service
-  action: service name=buildbotd state=started
+  action: service name=buildbotd state=restarted
   when: ansible_distribution == 'FreeBSD'

@@ -1,2 +1,9 @@
-- name: Install buildslave
-  action: pip executable="{{python_exe}} -m pip" name=buildbot-slave
+- name: Make buildbot virtualenv
+  action: pip virtualenv_command="{{python_exe}} -m virtualenv" name="buildbot-slave" virtualenv="/buildslave/venv/"
+
+- name: Make buildbot virtualenv (again???)
+  action: pip executable="/buildslave/venv/bin/pip" name="buildbot-slave"
+
+- name: Disable SELinux
+  action: lineinfile dest=/etc/selinux/config regexp=^SELINUX= line=SELINUX=permissive
+  when: ansible_distribution == 'Fedora'
